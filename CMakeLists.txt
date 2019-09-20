@@ -38,6 +38,9 @@ if(COMMAND cmake_policy)
     cmake_policy(SET CMP0005 NEW)
 endif()
 
+# force gcc as vfxreference platform suggests
+add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
+
 # macros
 include(GNUInstallDirs)
 include(src/build/macros.cmake)
@@ -83,6 +86,7 @@ endif()
 set(GTEST_DIR /usr CACHE PATH "Where to find GTEST") # /usr/include/gtest)
 set(ENABLE_LLVM_BACKEND ON CACHE BOOL "Whether to build with LLVM backend")
 set(USE_PYTHON ON CACHE BOOL "Whether to compile python libraries")
+set(BUILD_STATIC ON CACHE BOOL "Whether to build static library")
 
 set(LLVM_LIB "")
 if (ENABLE_LLVM_BACKEND)
